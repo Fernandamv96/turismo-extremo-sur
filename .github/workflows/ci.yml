@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - name: Lint (eslint + html-validate)
+        run: npm run lint
+      - name: Build check (archivos referenciados existen)
+        run: |
+          for f in $(grep -oE '(src|href)="(css|js|img)/[^"]+"' index.html | cut -d'"' -f2)                    $(grep -oE '(imagen|foto): *"img/[^"]+"' js/main.js | cut -d'"' -f2); do
+            test -f "$f" || { echo "Falta $f"; exit 1; }
+          done
+          echo "Todos los recursos locales existen"
