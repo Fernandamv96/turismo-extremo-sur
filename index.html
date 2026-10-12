@@ -2,56 +2,202 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Turismo Extremo Sur</title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="./styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Caminatas y viajes a caballo por la Patagonia chilena desde Punta Arenas: Monte Tarn, Laguna Parrillar, Mirador Zapador Austral y cabalgatas." />
+  <meta name="theme-color" content="#070b12" />
+  <title>Turismo Extremo Sur · Aventuras en la Patagonia</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
-
 <body>
 
-  <header>
-    <h1>Turismo Extremo Sur</h1>
-    <nav>
-      <a href="#inicio">Inicio</a>
-      <a href="#destinos">Destinos</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+  <!-- ── NAVBAR ── -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">Turismo<span>Extremo</span>Sur</a>
+      <nav class="nav-links" id="nav-links" aria-label="Principal">
+        <a href="#quienes-somos">¿Quiénes somos?</a>
+        <a href="#nuestros-servicios">Nuestros servicios</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a href="#contactanos" class="nav-cta">Contáctanos</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
-  <section id="inicio">
-    <h2>Bienvenido</h2>
-    <p>Descubre aventuras en el sur de Chile</p>
-    <img src="./img/hero.jpg" alt="Turismo sur">
-  </section>
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
 
-  <section id="destinos">
-    <h2>Destinos</h2>
+    <div class="hero-content">
+      <div class="hero-badge"><span class="dot"></span><span class="shiny">Punta Arenas · Patagonia chilena</span></div>
+      <h1 class="hero-title">
+        <span class="split" data-split>Turismo</span>
+        <span class="split gradient" data-split>Extremo Sur</span>
+      </h1>
+      <p class="hero-sub">Caminatas y viajes a caballo por los paisajes más salvajes de la Patagonia. Experiencias únicas en los confines del mundo.</p>
+      <div class="hero-actions">
+        <a href="#nuestros-servicios" class="btn btn-primary">Ver nuestros servicios <span aria-hidden="true">→</span></a>
+        <a href="#contactanos" class="btn btn-ghost">Reservar una aventura</a>
+      </div>
 
-    <div class="card">
-      <img src="./img/torres.jpg" alt="Torres del Paine">
-      <h3>Torres del Paine</h3>
+      <dl class="hero-stats">
+        <div><dt><span data-count="4">0</span></dt><dd>Rutas guiadas</dd></div>
+        <div><dt>$<span data-count="15000" data-format="clp">0</span></dt><dd>Desde, por persona</dd></div>
+        <div><dt>Oct–Mar</dt><dd>Temporada activa</dd></div>
+      </dl>
     </div>
 
-    <div class="card">
-      <img src="./img/glaciar.jpg" alt="Glaciares">
-      <h3>Glaciares</h3>
+    <a href="#quienes-somos" class="scroll-hint" aria-label="Bajar a la siguiente sección"><span></span></a>
+  </section>
+
+  <!-- ── QUIÉNES SOMOS ── -->
+  <section id="quienes-somos">
+    <div class="section-inner about">
+      <div class="about-text reveal">
+        <div class="section-label">Equipo</div>
+        <h2 class="section-title">¿Quiénes somos?</h2>
+        <p class="section-desc">Somos apasionados de la Patagonia con años de experiencia guiando aventuras en los rincones más remotos del sur de Chile. Salimos a caminar o a caballo con grupos pequeños, a ritmo humano y con seguridad.</p>
+        <ul class="about-points">
+          <li><span>🧭</span> Guías locales que conocen cada sendero</li>
+          <li><span>🐴</span> Caballos criollos acostumbrados a la estepa</li>
+          <li><span>🌿</span> Grupos pequeños y turismo de bajo impacto</li>
+        </ul>
+      </div>
+      <div class="team-grid" id="team-grid">
+        <!-- Se llena con mostrarEquipo() -->
+      </div>
     </div>
-
   </section>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>Email: contacto@turismo.cl</p>
+  <!-- ── NUESTROS SERVICIOS ── -->
+  <section id="nuestros-servicios">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <div class="section-label">Aventura</div>
+        <h2 class="section-title">Nuestros servicios</h2>
+        <p class="section-desc">Cuatro rutas icónicas de la región de Magallanes. Cada salida es una historia diferente.</p>
+      </div>
+      <div id="servicios-grid">
+        <!-- Se llena dinámicamente con mostrarServicios() -->
+      </div>
+    </div>
   </section>
 
+  <!-- ── UBICACIÓN ── -->
+  <section id="ubicacion">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <div class="section-label">Ubicación</div>
+        <h2 class="section-title">Salimos desde Punta Arenas</h2>
+        <p class="section-desc">Todas las excursiones parten desde Punta Arenas, a orillas del Estrecho de Magallanes. Coordinamos el traslado desde tu alojamiento.</p>
+      </div>
+      <div class="mapa-wrap reveal">
+        <iframe
+          src="https://www.google.com/maps?q=Punta%20Arenas%2C%20Magallanes%2C%20Chile&z=10&output=embed"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa de Punta Arenas">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTÁCTANOS ── -->
+  <section id="contactanos">
+    <div class="section-inner contact-layout">
+      <div class="contact-info reveal">
+        <div class="section-label">Contacto</div>
+        <h2 class="section-title">Contáctanos</h2>
+        <p class="section-desc">¿Tienes dudas o quieres reservar una aventura? Escríbenos y te respondemos a la brevedad.</p>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-item-title">Ubicación</div>
+            <div class="contact-item-val">Punta Arenas, Región de Magallanes<br />Chile</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <div class="contact-item-title">Email</div>
+            <div class="contact-item-val"><a href="mailto:contacto@turismoextremosur.cl">contacto@turismoextremosur.cl</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🏔️</div>
+          <div>
+            <div class="contact-item-title">Temporada activa</div>
+            <div class="contact-item-val">Octubre a marzo<br />Reserva con anticipación</div>
+          </div>
+        </div>
+      </div>
+
+      <form id="form-contacto" class="reveal" novalidate>
+        <div class="form-row">
+          <div class="form-group" id="grupo-nombre">
+            <label for="nombre">Nombre *</label>
+            <input type="text" id="nombre" autocomplete="name" placeholder="Tu nombre completo" />
+            <span class="error-msg">Este campo es obligatorio.</span>
+          </div>
+          <div class="form-group" id="grupo-celular">
+            <label for="celular">Celular *</label>
+            <input type="tel" id="celular" autocomplete="tel" placeholder="+56 9 1234 5678" />
+            <span class="error-msg">Ingresa solo números.</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group" id="grupo-email">
+            <label for="email">Email *</label>
+            <input type="email" id="email" autocomplete="email" placeholder="correo@ejemplo.com" />
+            <span class="error-msg">Ingresa un email válido.</span>
+          </div>
+          <div class="form-group" id="grupo-pais">
+            <label for="pais">País *</label>
+            <input type="text" id="pais" autocomplete="country-name" placeholder="Chile" />
+            <span class="error-msg">Este campo es obligatorio.</span>
+          </div>
+        </div>
+        <div class="form-group" id="grupo-ciudad">
+          <label for="ciudad">Ciudad *</label>
+          <input type="text" id="ciudad" autocomplete="address-level2" placeholder="Punta Arenas" />
+          <span class="error-msg">Este campo es obligatorio.</span>
+        </div>
+        <div class="form-group" id="grupo-consulta">
+          <label for="consulta">Consulta *</label>
+          <textarea id="consulta" placeholder="¿Qué ruta te interesa y para cuántas personas?"></textarea>
+          <span class="error-msg">Escribe tu consulta.</span>
+        </div>
+        <button type="submit" id="btn-enviar" class="btn btn-primary">Enviar consulta <span aria-hidden="true">→</span></button>
+        <div id="mensaje-exito" role="status" aria-live="polite">✅ ¡Mensaje enviado con éxito! Te contactaremos pronto.</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
   <footer>
-    <p>© 2026 Turismo Extremo Sur</p>
+    <div class="section-inner footer-inner">
+      <a href="#hero" class="nav-logo">Turismo<span>Extremo</span>Sur</a>
+      <p>© <span id="anio">2026</span> Turismo Extremo Sur · Punta Arenas, Patagonia, Chile</p>
+      <details class="creditos">
+        <summary>Créditos de las fotografías</summary>
+        <ul>
+          <li>Cuernos del Paine — Pedro Szekely, <a href="https://commons.wikimedia.org/wiki/File:Cuernos_del_Paine_in_Torres_del_Paine_National_Park.jpg" target="_blank" rel="noopener">CC BY-SA 2.0</a></li>
+          <li>Monte Tarn — U.S. Marine Corps, Sgt. Gabriel Groseclose-Durand, <a href="https://commons.wikimedia.org/wiki/File:Marines_Scale_Mount_Tarn,_Chile_(8570501).jpg" target="_blank" rel="noopener">dominio público</a></li>
+          <li>Laguna Parrillar — Alvaro.galvez, <a href="https://commons.wikimedia.org/wiki/File:PANO_20180219_182239.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
+          <li>Mirador Zapador Austral — Andy Calavera, <a href="https://commons.wikimedia.org/wiki/File:Mirador_Zapador_Austral.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
+          <li>Caballos ante los Cuernos del Paine — Diego Delso, <a href="https://commons.wikimedia.org/wiki/File:Caballos_ante_los_Cuernos_del_Paine,_Parque_Nacional_Torres_del_Paine,_Chile1.jpg" target="_blank" rel="noopener">CC BY-SA 3.0</a></li>
+          <li>Estrecho de Magallanes — Entropy1963, <a href="https://commons.wikimedia.org/wiki/File:Punta_Arenas_Strait_of_Magellan.jpg" target="_blank" rel="noopener">dominio público</a></li>
+        </ul>
+      </details>
+    </div>
   </footer>
 
-  <!-- JS -->
-  <script src="./script.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
-
