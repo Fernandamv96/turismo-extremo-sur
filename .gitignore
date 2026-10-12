@@ -1,2 +1,10 @@
 node_modules
 .DS_Store
+
+# Archivos comprimidos (el código ya está versionado)
+*.zip
+
+# Env
+.env
+.env.*
+!.env.example
