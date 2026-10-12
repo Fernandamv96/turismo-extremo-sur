@@ -76,6 +76,19 @@ a { color: inherit; }
 
 .btn-ghost:hover { background: rgba(255, 255, 255, .12); transform: translateY(-2px); }
 
+/* Texto solo para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ── NAVBAR ── */
 .nav {
   position: fixed;
@@ -83,6 +96,9 @@ a { color: inherit; }
   z-index: 100;
   transition: background .3s, border-color .3s, backdrop-filter .3s;
   border-bottom: 1px solid transparent;
+  /* Fondo oscuro también arriba: la aurora animada bajaba el contraste del texto (WCAG AA) */
+  background: rgba(7, 11, 18, .82);
+  backdrop-filter: blur(10px);
 }
 
 .nav.scrolled {
