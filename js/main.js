@@ -74,7 +74,7 @@ function mostrarServicios() {
 
     card.innerHTML = `
       <div class="servicio-img-wrap">
-        <img src="${s.imagen}" alt="${s.nombre}" loading="lazy" style="object-position: ${s.posicion || "center"}" />
+        <img src="${s.imagen}" alt="${s.nombre}" loading="lazy" />
         <div class="servicio-tags">
           <span class="tag tag-tipo">${s.tipo === "Cabalgata" ? "🐴" : "🥾"} ${s.tipo}</span>
           <span class="tag tag-duracion">⏱ ${s.duracion}</span>
@@ -97,8 +97,12 @@ function mostrarServicios() {
       </div>
     `;
 
+    const img = card.querySelector("img");
+    // Encuadre por CSSOM (no atributo style inline, que la CSP bloquea)
+    img.style.objectPosition = s.posicion || "center";
+
     // Si la imagen no carga, se muestra un marcador
-    card.querySelector("img").addEventListener("error", function () {
+    img.addEventListener("error", function () {
       this.replaceWith(crearPlaceholder());
     });
 
@@ -158,7 +162,7 @@ function validarFormulario() {
   }
 
   // Celular: solo dígitos (se permiten espacios, guiones y +)
-  const celularLimpio = valores.celular.replace(/[\s+\-]/g, "");
+  const celularLimpio = valores.celular.replace(/[\s+-]/g, "");
   if (valores.celular === "") {
     mostrarError("celular", "Este campo es obligatorio.");
     valido = false;
@@ -250,8 +254,12 @@ function animarTitulo() {
   let retraso = 0;
   document.querySelectorAll("[data-split]").forEach(function (el) {
     const texto = el.textContent;
-    el.setAttribute("aria-label", texto);
     el.textContent = "";
+    // Texto completo para lectores de pantalla; las letras animadas van con aria-hidden
+    const accesible = document.createElement("span");
+    accesible.className = "sr-only";
+    accesible.textContent = texto;
+    el.appendChild(accesible);
     texto.split("").forEach(function (letra) {
       const span = document.createElement("span");
       span.className = "char";
