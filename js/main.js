@@ -52,7 +52,7 @@ let integrantes = [
   {
     nombre: "Daniela Muñoz",
     rol: "Estudiante Analista Programador",
-    email: "[correo eliminado]",
+    github: "https://github.com/Fernandamv96",
     foto: null // ruta a la foto, por ejemplo "img/daniela.jpg"
   }
 ];
@@ -136,7 +136,7 @@ function mostrarEquipo() {
       <div class="team-info">
         <div class="team-name">${p.nombre}</div>
         <div class="team-role">${p.rol}</div>
-        <a class="team-email" href="mailto:${p.email}">📧 ${p.email}</a>
+        ${p.github ? `<a class="team-email" href="${p.github}" target="_blank" rel="noopener noreferrer">🔗 GitHub</a>` : ""}
       </div>
     `;
     grid.appendChild(card);
